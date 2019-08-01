@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee, faHome, faCog } from '@fortawesome/free-solid-svg-icons';
+import { LabelInfoComponent } from './label-info/label-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LabelInfoComponent
   ],
   imports: [
     BrowserModule,
