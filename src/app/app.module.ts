@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCoffee, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faHome, faCog } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,6 @@ import { faCoffee, faHome } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppModule {
   constructor() {
-    library.add(faCoffee, faHome);
+    library.add(faCoffee, faHome, faCog);
   }
 }
