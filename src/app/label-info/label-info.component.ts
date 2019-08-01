@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LabelInfoComponent implements OnInit {
   @Input() title: string;
   @Input() value: string;
+  @Input() animated = true;
 
   constructor() {
     this.title = 'Label';
