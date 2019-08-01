@@ -1,3 +1,5 @@
+$particle_width: 40%
+
 .navbar-item fa-icon
     margin-right: 5px
 
@@ -20,13 +22,13 @@
 .particle:before
     display: none
     top: -75%
-    background-image: radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, transparent 20%, #00d1b2 20%, transparent 30%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, transparent 10%, #00d1b2 15%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%)
+    background-image: radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, transparent 20%, #00d1b2 $particle_width, transparent 30%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, transparent $particle_width, #00d1b2 15%, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%)
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%
 
 .particle:after
     display: none
     bottom: -75%
-    background-image: radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, transparent 10%, #00d1b2 15%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%), radial-gradient(circle, #00d1b2 20%, transparent 20%)
+    background-image: radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, transparent 10%, #00d1b2 35%, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%), radial-gradient(circle, #00d1b2 $particle_width, transparent 20%)
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%
 
 .particle.animate:before
