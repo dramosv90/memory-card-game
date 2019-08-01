@@ -30,7 +30,13 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "node_modules/bulma/sass/utilities"
+              ]
+            }
           },
           "configurations": {
             "production": {
