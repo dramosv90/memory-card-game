@@ -9,13 +9,15 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { LabelInfoComponent } from './label-info/label-info.component';
 import { DropdownSelectComponent } from './dropdown-select/dropdown-select.component';
+import { LanguagePipe } from './language.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LabelInfoComponent,
-    DropdownSelectComponent
+    DropdownSelectComponent,
+    LanguagePipe
   ],
   imports: [
     BrowserModule,

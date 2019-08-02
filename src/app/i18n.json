@@ -1,0 +1,12 @@
+{
+    "english": {
+        "remains": "Remains",
+        "movements": "Movements",
+        "settings": "Settings"
+    },
+    "spanish": {
+        "remains": "Pendientes",
+        "movements": "Movimientos",
+        "settings": "Configuración"
+    }
+}

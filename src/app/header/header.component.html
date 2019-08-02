@@ -11,8 +11,8 @@
 
     <div class="navbar-menu">
         <div class="navbar-end">
-            <div class="navbar-item"><app-label-info title="Movements" value="05"></app-label-info></div>
-            <div class="navbar-item"><app-label-info title="Remains" value="19"></app-label-info></div>
+            <div class="navbar-item"><app-label-info title="{{ 'movements'|i18n }}" value="05"></app-label-info></div>
+            <div class="navbar-item"><app-label-info title="{{ 'remains'|i18n }}" value="19"></app-label-info></div>
             <div class="navbar-item has-dropdown is-hoverable">
                 <app-dropdown-select title="Language" [items]="['English', 'Spanish']"
                     value="English" (selectChoice)="selectLanguage($event)"></app-dropdown-select>
