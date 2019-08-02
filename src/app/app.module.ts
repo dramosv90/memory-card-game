@@ -6,14 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCoffee, faHome, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { LabelInfoComponent } from './label-info/label-info.component';
+import { DropdownSelectComponent } from './dropdown-select/dropdown-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LabelInfoComponent
+    LabelInfoComponent,
+    DropdownSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { LabelInfoComponent } from './label-info/label-info.component';
 })
 export class AppModule {
   constructor() {
-    library.add(faCoffee, faHome, faCog);
+    library.add(faCog, faCheck);
   }
 }

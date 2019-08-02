@@ -1,0 +1,8 @@
+<a class="navbar-link">
+    {{ title }}
+</a>
+<div class="navbar-dropdown">
+    <a class="navbar-item" *ngFor="let item of items">
+        <fa-icon icon="check" [ngStyle]="checkedStyle(item)"></fa-icon> {{ item }}
+    </a>
+</div>
