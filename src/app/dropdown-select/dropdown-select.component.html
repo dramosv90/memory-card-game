@@ -2,7 +2,7 @@
     {{ title }}
 </a>
 <div class="navbar-dropdown">
-    <a class="navbar-item" *ngFor="let item of items">
+    <a class="navbar-item" *ngFor="let item of items" (click)="selectItem(item)">
         <fa-icon icon="check" [ngStyle]="checkedStyle(item)"></fa-icon> {{ item }}
     </a>
 </div>

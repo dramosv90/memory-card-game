@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
@@ -11,6 +11,7 @@ export class DropdownSelectComponent implements OnInit {
   @Input() title;
   @Input() items: Array<string>;
   @Input() value;
+  @Output() selectChoice: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     this.title = 'Dropdown';
@@ -21,11 +22,18 @@ export class DropdownSelectComponent implements OnInit {
     this.value = this.items[0];
   }
 
+  selectItem(item: string): void {
+    if (item === this.value) {
+      return;
+    }
+    this.value = item;
+    this.selectChoice.emit(item);
+  }
+
   ngOnInit() {
   }
 
   checkedStyle(actualItem): object {
-    console.log(actualItem, actualItem === this.value);
     return actualItem === this.value ? null : {opacity: 0};
   }
 
