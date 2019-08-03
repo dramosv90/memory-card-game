@@ -2,11 +2,13 @@
     "english": {
         "remains": "Remains",
         "movements": "Movements",
-        "settings": "Settings"
+        "settings": "Settings",
+        "language": "Language"
     },
     "spanish": {
         "remains": "Pendientes",
         "movements": "Movimientos",
-        "settings": "Configuración"
+        "settings": "Configuración",
+        "language": "Idioma"
     }
 }

@@ -10,6 +10,7 @@ import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { LabelInfoComponent } from './label-info/label-info.component';
 import { DropdownSelectComponent } from './dropdown-select/dropdown-select.component';
 import { LanguagePipe } from './language.pipe';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LanguagePipe } from './language.pipe';
     HeaderComponent,
     LabelInfoComponent,
     DropdownSelectComponent,
-    LanguagePipe
+    LanguagePipe,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
