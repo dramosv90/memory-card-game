@@ -14,7 +14,7 @@
             <div class="navbar-item"><app-label-info title="{{ 'movements'|i18n }}" value="05"></app-label-info></div>
             <div class="navbar-item"><app-label-info title="{{ 'remains'|i18n }}" value="19"></app-label-info></div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <app-dropdown-select title="{{ 'language'|i18n }}" [items]="['English', 'Spanish']"
+                <app-dropdown-select title="{{ 'language'|i18n }}" [items]="languages"
                     [value]="actualLanguage" (selectChoice)="selectLanguage($event)"></app-dropdown-select>
             </div>
             <div class="navbar-item">

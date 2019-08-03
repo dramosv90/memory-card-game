@@ -19,6 +19,11 @@ export class StoreService {
 
   loadData() {
     this.mainData = JSON.parse(localStorage.getItem(storageKey));
+    const inStorage = this.mainData && !!this.mainData['language'];
+    if (!inStorage) {
+      this.mainData = {language: defaultLanguage};
+      localStorage.setItem(storageKey, JSON.stringify(this.mainData));
+    }
   }
 
   get translationChangeSubject(): Subject<any> {
@@ -30,7 +35,7 @@ export class StoreService {
   }
 
   get language() {
-    return typeof this.mainData[languageKey] !== 'undefined'
+    return !!this.mainData[languageKey]
       ? this.mainData[languageKey]
       : defaultLanguage;
   }

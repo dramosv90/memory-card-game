@@ -3,12 +3,16 @@
         "remains": "Remains",
         "movements": "Movements",
         "settings": "Settings",
-        "language": "Language"
+        "language": "Language",
+        "spanish": "Spanish",
+        "english": "English"
     },
     "spanish": {
         "remains": "Pendientes",
         "movements": "Movimientos",
         "settings": "Configuración",
-        "language": "Idioma"
+        "language": "Idioma",
+        "spanish": "Español",
+        "english": "Ingles"
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
+import { LocalTranslationService } from '../local-translation.service';
 
 @Component({
   selector: 'app-header',
@@ -8,27 +9,30 @@ import { StoreService } from '../store.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private store: StoreService) { }
+  constructor(private translation: LocalTranslationService) { }
 
   ngOnInit() {
     //this.store.translationChangeSubject.subscribe(item => alert(item));
   }
 
   selectLanguage(choice) {
-    this.store.language = choice;
+    /*tslint:disable:no-string-literal*/
+    this.translation.changeLanguage(choice);
   }
 
   openSettings() {
     alert('Settings');
   }
 
-  private ucFirst(text: string): string {
-    const [first, ...rest] = text;
-    return first.toUpperCase() + rest.join('');
+  get actualLanguage(): string {
+    return this.translation.actualLanguage;
   }
 
-  get actualLanguage() {
-    return this.ucFirst(this.store.language);
+  get languages(): Array<object> {
+    return [
+      { label: this.translation.translate('english'), id: 'english'},
+      { label: this.translation.translate('spanish'), id: 'spanish'}
+    ];
   }
 
 }
