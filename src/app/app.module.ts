@@ -11,6 +11,7 @@ import { LabelInfoComponent } from './label-info/label-info.component';
 import { DropdownSelectComponent } from './dropdown-select/dropdown-select.component';
 import { LanguagePipe } from './language.pipe';
 import { ButtonComponent } from './button/button.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ButtonComponent } from './button/button.component';
     LabelInfoComponent,
     DropdownSelectComponent,
     LanguagePipe,
-    ButtonComponent
+    ButtonComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
