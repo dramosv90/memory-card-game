@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MemoryGame';
+  items = [...'12345'];
 }
