@@ -2,13 +2,10 @@
 <section class="section">
     <div class="container">
         <section>
-            <div class="columns" *ngFor="let item of items">
-                <div class="column is-2"><app-card></app-card></div>
-                <div class="column is-2"><app-card></app-card></div>
-                <div class="column is-2"><app-card></app-card></div>
-                <div class="column is-2"><app-card></app-card></div>
-                <div class="column is-2"><app-card></app-card></div>
-                <div class="column is-2"><app-card></app-card></div>
+            <div class="columns" *ngFor="let item of items1">
+                <div class="column is-1" *ngFor="let card of cards[item]">
+                    <app-card [number]="card"></app-card>
+                </div>
             </div>
         </section>
     </div>

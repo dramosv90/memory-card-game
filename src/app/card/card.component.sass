@@ -1,10 +1,10 @@
-$height: 75
+$height: 60
 $width: floor($height * 1.35)
 
 .scene
     width: unquote($width + 'px')
     height: unquote($height + 'px')
-    perspective: quote(floor($height*$width*1.5)+'px')
+    perspective: quote(floor($height+$width*1.5)+'px')
     border-radius: 5px
     cursor: pointer
 
