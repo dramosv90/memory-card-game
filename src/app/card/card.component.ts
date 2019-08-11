@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,14 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
   isFlipped = false;
   @Input() number = '2C';
+  @Output() flipped = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   flipCard() {
     this.isFlipped = !this.isFlipped;
+    setTimeout(() => this.flipped.emit(null), 400);
   }
 
   get frontImage() {

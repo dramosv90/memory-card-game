@@ -11,7 +11,6 @@ export class LocalTranslationService {
 
   translate(value: string) {
     this.store.loadData();
-    console.log(this.store.language);
     const target = this.store.language;
     /* tslint:disable:no-string-literal */
     const languageData = languageJson['default'];

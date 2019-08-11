@@ -1,17 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList, OnInit, AfterViewInit } from '@angular/core';
 import { faOtter } from '@fortawesome/free-solid-svg-icons';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'MemoryGame';
   items: Array<string> = [];
+  @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
+  private flippedCards: Array<number> = [];
 
   constructor() {
     this.createCards();
+  }
+
+  ngAfterViewInit() {
+    // setTimeout(() => this.cardComponents.find((item, index) => index === 1).flipCard(), 5000);
+    // console.log(this.cardComponents);
   }
 
   async createCards() {
@@ -28,7 +36,7 @@ export class AppComponent {
     for (let j = 0; j < 15; j++) {
       this.items.push(this.items[j]);
     }
-    await this.shuffle();
+    this.shuffle();
   }
 
   shuffle(): Promise<any> {
@@ -42,16 +50,24 @@ export class AppComponent {
           this.items[newIndex] = temp;
         }
       }
+      const found = {};
       for (let k = 0; k < 30; k++) {
-        // Check if exist all pairs
+        found[this.items[k]] = Object.keys(found).find(item => item === this.items[k])
+          ? found[this.items[k]] + 1
+          : 1;
       }
       resolve();
     });
   }
 
   cardsForColumn(column): Array<string> {
-    const realColumn = column * this.rowsLength + 1;
+    const realColumn = column * (this.rowsLength + 1);
+    // console.log('item: ' + realColumn + ' : ' + (realColumn + this.rowsLength + 1));
     return this.items.slice(realColumn, realColumn + this.rowsLength + 1);
+  }
+
+  onFlippedCard() {
+    alert('aki');
   }
 
   get rowsLength() {
