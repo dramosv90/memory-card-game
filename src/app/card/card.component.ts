@@ -6,7 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.sass']
 })
 export class CardComponent implements OnInit {
-  isFlipped = false;
+  private isFlipped = false;
+  private blocked = false;
+  @Input() canFlip = true;
   @Input() number = '2C';
   @Output() flipped = new EventEmitter();
 
@@ -15,8 +17,21 @@ export class CardComponent implements OnInit {
   ngOnInit() { }
 
   flipCard() {
+    if ((!this.canFlip && !this.isFlipped) || this.blocked) {
+      return;
+    }
     this.isFlipped = !this.isFlipped;
-    setTimeout(() => this.flipped.emit(null), 400);
+    if (this.isFlipped) {
+      setTimeout(() => this.flipped.emit(null), 400);
+    }
+  }
+
+  block() {
+    this.blocked = true;
+  }
+
+  unBlock() {
+    this.blocked = false;
   }
 
   get frontImage() {

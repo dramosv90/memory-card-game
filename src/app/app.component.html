@@ -2,9 +2,11 @@
 <section class="section">
     <div class="container">
         <section>
-            <div class="columns" *ngFor="let item of items1">
-                <div class="column is-1" *ngFor="let card of cards[item]">
-                    <app-card [number]="card" (flipped)="onFlippedCard()"></app-card>
+            <div class="columns" *ngFor="let item of rows; index as i">
+                <div class="column is-1" *ngFor="let card of cards[item]; index as j">
+                    <app-card [number]="card"
+                        (flipped)="onFlippedCard(i, j)"
+                        [canFlip]="canFlip"></app-card>
                 </div>
             </div>
         </section>

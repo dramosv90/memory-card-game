@@ -11,7 +11,7 @@ export class AppComponent implements AfterViewInit {
   title = 'MemoryGame';
   items: Array<string> = [];
   @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
-  private flippedCards: Array<number> = [];
+  private flippedCards: Array<CardComponent> = [];
 
   constructor() {
     this.createCards();
@@ -66,8 +66,30 @@ export class AppComponent implements AfterViewInit {
     return this.items.slice(realColumn, realColumn + this.rowsLength + 1);
   }
 
-  onFlippedCard() {
-    alert('aki');
+  areSameCards() {
+    return this.flippedCards.length === 2 &&
+      this.flippedCards.filter(item => item.number === this.flippedCards[0].number).length === 2;
+  }
+
+  onFlippedCard(row, col) {
+    const index = 6 * row + col;
+    const actualFlipped = this.cardComponents.find((item, i) => i === index);
+    if (this.flippedCards.length < 1) {
+      this.flippedCards.push(actualFlipped);
+    } else {
+      this.flippedCards.push(this.cardComponents.find((item, i) => i === index));
+      if (this.areSameCards()) {
+        this.flippedCards.forEach(card => card.block());
+      }
+      setTimeout(() => {
+        this.flippedCards.forEach(card => card.flipCard());
+        this.flippedCards = [];
+      }, 250);
+    }
+  }
+
+  get canFlip() {
+    return this.flippedCards.length !== 2;
   }
 
   get rowsLength() {
@@ -83,7 +105,7 @@ export class AppComponent implements AfterViewInit {
     return result;
   }
 
-  get items1() {
+  get rows() {
     return Object.keys(this.cards);
   }
 }
