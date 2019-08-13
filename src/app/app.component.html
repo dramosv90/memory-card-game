@@ -6,7 +6,7 @@
                 <div class="column is-1" *ngFor="let card of cards[item]; index as j">
                     <app-card [number]="card"
                         (flipped)="onFlippedCard(i, j)"
-                        (beforeFlipped)="onBeforeFlipped()"
+                        (beforeFlipped)="onBeforeFlipped(i, j)"
                         [canFlip]="canFlip"></app-card>
                 </div>
             </div>

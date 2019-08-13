@@ -39,7 +39,7 @@ export class AppComponent implements AfterViewInit {
     for (let j = 0; j < 15; j++) {
       this.items.push(this.items[j]);
     }
-    this.shuffle();
+    //this.shuffle();
   }
 
   shuffle(): Promise<any> {
@@ -73,8 +73,13 @@ export class AppComponent implements AfterViewInit {
       this.flippedCards.filter(item => item.number === this.flippedCards[0].number).length === 2;
   }
 
-  onBeforeFlipped() {
+  onBeforeFlipped(row, col) {
     this.header.incrementMoves();
+    const index = 6 * row + col;
+    const actualFlipped = this.cardComponents.find((item, i) => i === index);
+    if (this.flippedCards.length === 1 && this.flippedCards[0].number === actualFlipped.number) {
+      this.header.decrementRemains();
+    }
   }
 
   onFlippedCard(row, col) {

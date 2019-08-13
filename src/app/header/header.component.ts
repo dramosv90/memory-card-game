@@ -50,10 +50,12 @@ export class HeaderComponent implements OnInit {
 
   resetRemains() {
     this.playerRest = 15;
+    this.remainsLabel.animate();
   }
 
   resetMovements() {
     this.playerMov = 0;
+    this.moveLabel.animate();
   }
 
   incrementMoves() {
@@ -63,6 +65,7 @@ export class HeaderComponent implements OnInit {
 
   decrementRemains() {
     this.playerRest--;
+    this.remainsLabel.animate();
   }
 
   resetAll() {
