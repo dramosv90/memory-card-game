@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   private cardId: string;
   @Input() canFlip = true;
   @Input() number = '2C';
+  @Input() isRed = false;
   @Output() flipped = new EventEmitter();
   @Output() backFlipped = new EventEmitter();
   @Output() beforeFlipped = new EventEmitter();
@@ -45,6 +46,11 @@ export class CardComponent implements OnInit {
 
   get frontImage() {
     return `./assets/cards/${this.number}.svg`;
+  }
+
+  get backImage() {
+    const backName = this.isRed ? 'RED_BACK' : 'BLUE_BACK';
+    return `./assets/cards/${backName}.svg`;
   }
 
   get id() {

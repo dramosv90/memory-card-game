@@ -1,7 +1,7 @@
 <div class="scene" (click)="flipCard()">
     <div [ngClass]="{card: true, 'is-flipped': isFlipped}">
         <div class="card__face card__face--front">
-            <img src="./assets/cards/BLUE_BACK.svg" />
+            <img [src]="backImage" />
         </div>
         <div class="card__face card__face--back">
             <img [src]="frontImage" />
