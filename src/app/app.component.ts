@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ViewChildren, QueryList, OnInit, AfterViewInit, ViewChild, DoCheck } from '@angular/core';
 import { faOtter } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,8 +8,9 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
   title = 'MemoryGame';
+  isSeparatedBy2 = false;
   private items: Array<string> = [];
   private backAnimInterval = 150;
   @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
@@ -19,6 +20,8 @@ export class AppComponent implements AfterViewInit {
   constructor() {
     this.createCards();
   }
+
+  ngOnInit() {}
 
   ngAfterViewInit() {
     // setTimeout(() => this.cardComponents.find((item, index) => index === 1).flipCard(), 5000);
@@ -130,5 +133,9 @@ export class AppComponent implements AfterViewInit {
 
   get rows() {
     return Object.keys(this.cards);
+  }
+
+  get columnClass() {
+    return { 'is-2': this.isSeparatedBy2, 'is-1': !this.isSeparatedBy2 };
   }
 }

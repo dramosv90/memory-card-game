@@ -1,16 +1,11 @@
 <app-header (foundPair)="onFoundPair($event)"></app-header>
 <section class="section">
     <div class="container">
-        <section>
-            <div class="columns" *ngFor="let item of rows; index as i">
-                <div class="column is-1" *ngFor="let card of cards[item]; index as j">
-                    <app-card [number]="card"
-                        (flipped)="onFlippedCard(i, j)"
-                        (beforeFlipped)="onBeforeFlipped(i, j)"
-                        [canFlip]="canFlip"></app-card>
-                </div>
+        <div class="columns" *ngFor="let item of rows; index as i">
+            <div class="column is-1-desktop is-1-fullhd is-2-mobile" *ngFor="let card of cards[item]; index as j">
+                <app-card [number]="card" (flipped)="onFlippedCard(i, j)" (beforeFlipped)="onBeforeFlipped(i, j)"
+                    [canFlip]="canFlip"></app-card>
             </div>
-        </section>
+        </div>
     </div>
 </section>
-<router-outlet></router-outlet>
