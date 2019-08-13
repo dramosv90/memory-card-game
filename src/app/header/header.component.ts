@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreService } from '../store.service';
 import { LocalTranslationService } from '../local-translation.service';
+import { LabelInfoComponent } from '../label-info/label-info.component';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,10 @@ import { LocalTranslationService } from '../local-translation.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  private playerMov = 1;
+  private playerMov = 0;
   private playerRest = 15;
+  @ViewChild('mov_label', {static: false}) moveLabel: LabelInfoComponent;
+  @ViewChild('remains_label', {static: false}) remainsLabel: LabelInfoComponent;
 
   constructor(private translation: LocalTranslationService) { }
 
@@ -51,6 +54,15 @@ export class HeaderComponent implements OnInit {
 
   resetMovements() {
     this.playerMov = 0;
+  }
+
+  incrementMoves() {
+    this.playerMov++;
+    this.moveLabel.animate();
+  }
+
+  decrementRemains() {
+    this.playerRest--;
   }
 
   resetAll() {

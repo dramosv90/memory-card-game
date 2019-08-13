@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LabelInfoComponent implements OnInit {
   @Input() title: string;
   @Input() value: string;
-  @Input() animated = true;
+  @Input() animated = false;
 
   constructor() {
     this.title = 'Label';
@@ -16,6 +16,11 @@ export class LabelInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  animate() {
+    this.animated = true;
+    setTimeout(() => this.animated = false, 250);
   }
 
 }

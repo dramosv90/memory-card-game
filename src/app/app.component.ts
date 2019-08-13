@@ -1,6 +1,7 @@
-import { Component, ViewChildren, QueryList, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChildren, QueryList, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { faOtter } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from './card/card.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements AfterViewInit {
   private items: Array<string> = [];
   private backAnimInterval = 150;
   @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
+  @ViewChild(HeaderComponent, {static: false}) header: HeaderComponent;
   private flippedCards: Array<CardComponent> = [];
 
   constructor() {
@@ -71,6 +73,10 @@ export class AppComponent implements AfterViewInit {
       this.flippedCards.filter(item => item.number === this.flippedCards[0].number).length === 2;
   }
 
+  onBeforeFlipped() {
+    this.header.incrementMoves();
+  }
+
   onFlippedCard(row, col) {
     const index = 6 * row + col;
     const actualFlipped = this.cardComponents.find((item, i) => i === index);
@@ -91,7 +97,6 @@ export class AppComponent implements AfterViewInit {
         this.flippedCards.forEach(card => card.flipCard());
         this.flippedCards = [];
       }, this.backAnimInterval);
-      // TODO If click on same card flipped not must increment flippedCards
     }
   }
 

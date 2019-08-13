@@ -14,6 +14,7 @@ export class CardComponent implements OnInit {
   @Input() number = '2C';
   @Output() flipped = new EventEmitter();
   @Output() backFlipped = new EventEmitter();
+  @Output() beforeFlipped = new EventEmitter();
 
   constructor(private randomId: RandomIdService) {
     this.cardId = this.randomId.instance();
@@ -27,6 +28,7 @@ export class CardComponent implements OnInit {
     }
     this.isFlipped = !this.isFlipped;
     if (this.isFlipped) {
+      this.beforeFlipped.emit(null);
       setTimeout(() => this.flipped.emit(null), 400);
     } else {
       setTimeout(() => this.backFlipped.emit(null), 400);
