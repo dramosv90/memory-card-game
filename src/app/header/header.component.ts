@@ -8,6 +8,8 @@ import { LocalTranslationService } from '../local-translation.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
+  private playerMov = 1;
+  private playerRest = 15;
 
   constructor(private translation: LocalTranslationService) { }
 
@@ -33,6 +35,27 @@ export class HeaderComponent implements OnInit {
       { label: this.translation.translate('english'), id: 'english'},
       { label: this.translation.translate('spanish'), id: 'spanish'}
     ];
+  }
+
+  get movements() {
+    return this.translation.withZero(this.playerMov);
+  }
+
+  get remains() {
+    return this.translation.withZero(this.playerRest);
+  }
+
+  resetRemains() {
+    this.playerRest = 15;
+  }
+
+  resetMovements() {
+    this.playerMov = 0;
+  }
+
+  resetAll() {
+    this.resetMovements();
+    this.resetRemains();
   }
 
 }

@@ -27,4 +27,8 @@ export class LocalTranslationService {
   changeLanguage(target: string) {
     this.store.language = target;
   }
+
+  withZero(n) {
+    return n < 10 ? `0${n}` : n;
+  }
 }
