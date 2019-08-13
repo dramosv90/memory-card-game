@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { StoreService } from '../store.service';
 import { LocalTranslationService } from '../local-translation.service';
 import { LabelInfoComponent } from '../label-info/label-info.component';
@@ -10,7 +10,8 @@ import { LabelInfoComponent } from '../label-info/label-info.component';
 })
 export class HeaderComponent implements OnInit {
   private playerMov = 0;
-  private playerRest = 15;
+  private playerRest = 1;
+  @Output() foundPair = new EventEmitter();
   @ViewChild('mov_label', {static: false}) moveLabel: LabelInfoComponent;
   @ViewChild('remains_label', {static: false}) remainsLabel: LabelInfoComponent;
 
@@ -65,6 +66,7 @@ export class HeaderComponent implements OnInit {
 
   decrementRemains() {
     this.playerRest--;
+    this.foundPair.emit({ remains: this.playerRest });
     this.remainsLabel.animate();
   }
 

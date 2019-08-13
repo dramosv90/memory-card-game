@@ -63,6 +63,12 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
+  onFoundPair($event) {
+    if (!$event.remains) {
+      setTimeout(() => alert('ganastes'), 250);
+    }
+  }
+
   cardsForColumn(column): Array<string> {
     const realColumn = column * (this.rowsLength + 1);
     return this.items.slice(realColumn, realColumn + this.rowsLength + 1);
