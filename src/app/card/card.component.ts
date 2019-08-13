@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { RandomIdService } from '../random-id.service';
 
 @Component({
   selector: 'app-card',
@@ -8,11 +9,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CardComponent implements OnInit {
   private isFlipped = false;
   private blocked = false;
+  private cardId: string;
   @Input() canFlip = true;
   @Input() number = '2C';
   @Output() flipped = new EventEmitter();
+  @Output() backFlipped = new EventEmitter();
 
-  constructor() { }
+  constructor(private randomId: RandomIdService) {
+    this.cardId = this.randomId.instance();
+  }
 
   ngOnInit() { }
 
@@ -23,6 +28,8 @@ export class CardComponent implements OnInit {
     this.isFlipped = !this.isFlipped;
     if (this.isFlipped) {
       setTimeout(() => this.flipped.emit(null), 400);
+    } else {
+      setTimeout(() => this.backFlipped.emit(null), 400);
     }
   }
 
@@ -36,6 +43,10 @@ export class CardComponent implements OnInit {
 
   get frontImage() {
     return `./assets/cards/${this.number}.svg`;
+  }
+
+  get id() {
+    return this.cardId;
   }
 
 }

@@ -9,7 +9,8 @@ import { CardComponent } from './card/card.component';
 })
 export class AppComponent implements AfterViewInit {
   title = 'MemoryGame';
-  items: Array<string> = [];
+  private items: Array<string> = [];
+  private backAnimInterval = 150;
   @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
   private flippedCards: Array<CardComponent> = [];
 
@@ -62,7 +63,6 @@ export class AppComponent implements AfterViewInit {
 
   cardsForColumn(column): Array<string> {
     const realColumn = column * (this.rowsLength + 1);
-    // console.log('item: ' + realColumn + ' : ' + (realColumn + this.rowsLength + 1));
     return this.items.slice(realColumn, realColumn + this.rowsLength + 1);
   }
 
@@ -75,6 +75,12 @@ export class AppComponent implements AfterViewInit {
     const index = 6 * row + col;
     const actualFlipped = this.cardComponents.find((item, i) => i === index);
     if (this.flippedCards.length < 1) {
+      actualFlipped.block();
+    } else {
+      this.flippedCards.forEach(item => item.unBlock());
+      actualFlipped.unBlock();
+    }
+    if (this.flippedCards.length < 1) {
       this.flippedCards.push(actualFlipped);
     } else {
       this.flippedCards.push(this.cardComponents.find((item, i) => i === index));
@@ -84,7 +90,8 @@ export class AppComponent implements AfterViewInit {
       setTimeout(() => {
         this.flippedCards.forEach(card => card.flipCard());
         this.flippedCards = [];
-      }, 250);
+      }, this.backAnimInterval);
+      // TODO If click on same card flipped not must increment flippedCards
     }
   }
 
