@@ -23,7 +23,12 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    const conffetti = new ConfettiGenerator({target: 'my-canvas'});
+    const settings = {
+      target: 'my-canvas',
+      max: 1000,
+      rotate: true
+    };
+    const conffetti = new ConfettiGenerator(settings);
     conffetti.render();
   }
 
