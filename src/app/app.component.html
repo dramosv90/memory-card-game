@@ -1,5 +1,6 @@
 <app-header (foundPair)="onFoundPair($event)"></app-header>
-<section class="section">
+<canvas id="my-canvas" style="z-index: 950; position: absolute"></canvas>
+<section class="section" style="z-index: 900">
     <div class="container">
         <div class="columns" *ngFor="let item of rows; index as i">
             <div class="column is-1-desktop is-1-fullhd is-2-mobile" *ngFor="let card of cards[item]; index as j">

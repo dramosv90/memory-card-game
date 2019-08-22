@@ -2,6 +2,7 @@ import { Component, ViewChildren, QueryList, OnInit, AfterViewInit, ViewChild, D
 import { faOtter } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './header/header.component';
+import ConfettiGenerator from 'confetti-js';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,10 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.createCards();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const conffetti = new ConfettiGenerator({target: 'my-canvas'});
+    conffetti.render();
+  }
 
   ngAfterViewInit() {
     // setTimeout(() => this.cardComponents.find((item, index) => index === 1).flipCard(), 5000);
