@@ -1,5 +1,5 @@
 <app-header (foundPair)="onFoundPair($event)"></app-header>
-<canvas id="my-canvas" style="z-index: 950; position: absolute"></canvas>
+<app-conffetti #conffetti></app-conffetti>
 <section class="section" style="z-index: 900">
     <div class="container">
         <div class="columns" *ngFor="let item of rows; index as i">

@@ -12,6 +12,7 @@ import { DropdownSelectComponent } from './dropdown-select/dropdown-select.compo
 import { LanguagePipe } from './language.pipe';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
+import { ConffettiComponent } from './conffetti/conffetti.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CardComponent } from './card/card.component';
     DropdownSelectComponent,
     LanguagePipe,
     ButtonComponent,
-    CardComponent
+    CardComponent,
+    ConffettiComponent
   ],
   imports: [
     BrowserModule,

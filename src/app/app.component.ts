@@ -2,7 +2,7 @@ import { Component, ViewChildren, QueryList, OnInit, AfterViewInit, ViewChild, D
 import { faOtter } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './header/header.component';
-import ConfettiGenerator from 'confetti-js';
+import { ConffettiComponent } from './conffetti/conffetti.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,8 @@ export class AppComponent implements AfterViewInit, OnInit {
   private items: Array<string> = [];
   private backAnimInterval = 150;
   @ViewChildren(CardComponent) cardComponents !: QueryList<CardComponent>;
-  @ViewChild(HeaderComponent, {static: false}) header: HeaderComponent;
+  @ViewChild(HeaderComponent, { static: false }) header: HeaderComponent;
+  @ViewChild('conffetti', { static: false }) conffetti: ConffettiComponent;
   private flippedCards: Array<CardComponent> = [];
 
   constructor() {
@@ -23,13 +24,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    const settings = {
-      target: 'my-canvas',
-      max: 1000,
-      rotate: true
-    };
-    const conffetti = new ConfettiGenerator(settings);
-    conffetti.render();
+    setTimeout(() => this.conffetti.render(), 100);
   }
 
   ngAfterViewInit() {
